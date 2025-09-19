@@ -1,0 +1,38 @@
+/* Fundo da página */
+body.bg-hero {
+  background-image: url("../assets/img/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+/* Card com fundo vermelho translúcido */
+.bg-transparente {
+
+  background-color: rgba(122, 14, 49, 0.75); /* vermelho semi-transparente */
+  color: white; /* texto legível */
+  border-radius: 0.5rem;
+}
+
+/* Card sem borda */
+.card {
+  border: none;
+}
+
+/* Inputs e botão legíveis dentro do card */
+.bg-transparente input,
+.bg-transparente button {
+  color: #000; /* texto escuro dentro do formulário */
+}
+
+/* Título */
+h2 {
+  font-weight: 600;
+}
+
+/* Muda a cor do texto de feedback de validação */
+.invalid-feedback {
+  color: #ffcc00; /* amarelo, por exemplo */
+  font-weight: 500; /* opcional: deixa um pouco mais destacado */
+}
