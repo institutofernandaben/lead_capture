@@ -47,7 +47,7 @@ document.getElementById("leadForm").addEventListener("submit", async (e) => {
   const data = { nome, email, instagram, telefone };
 
   try {
-    const response = await fetch("https://b53db1b7a029.ngrok-free.app", {
+    const response = await fetch("https://b53db1b7a029.ngrok-free.app/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
