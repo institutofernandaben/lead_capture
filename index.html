@@ -4,36 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Congresso 19/09/2025</title>
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/img/page-icon.png" />
-
-    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body class="bg-hero d-flex align-items-center justify-content-center vh-100">
     <div class="container">
       <div class="row justify-content-end align-items-center">
-        <!-- Colunas da esquerda vazias -->
-        <div class="col-6 d-none d-md-block">
-          <!-- Intencionalmente vazio -->
-        </div>
+        <div class="col-6 d-none d-md-block"></div>
 
-        <!-- Colunas da direita: imagem + logo + card -->
         <div class="col-12 col-md-6 d-flex flex-column align-items-center">
-          <!-- Logo -->
           <img
             src="assets/img/logo-fernanda-bem.jpg"
             alt="Logo"
             class="img-fluid mb-3 w-50"
           />
 
-          <!-- Card com formulário -->
           <div class="card shadow-lg rounded-4 bg-transparente w-100">
             <div class="card-body p-4">
               <h2 class="text-center mb-3">Baixe seu material gratuito!</h2>
@@ -41,7 +30,6 @@
                 Preencha os dados para liberar o PDF:
               </p>
 
-              <!-- Formulário -->
               <form id="leadForm" class="needs-validation" novalidate>
                 <div class="mb-3">
                   <label for="nome" class="form-label">Nome</label>
@@ -83,6 +71,7 @@
                     Usuário deve começar com @ ex: @exemplo.
                   </div>
                 </div>
+
                 <div class="mb-3">
                   <label for="telefone" class="form-label">Telefone</label>
                   <input
@@ -96,22 +85,81 @@
                   <div class="invalid-feedback">Informe um número válido.</div>
                 </div>
 
-                <!-- Botão de enviar -->
+                <!-- Campo: Já é nosso aluno? -->
+                <div class="mb-3">
+                  <label class="form-label d-block mb-2">Já é nosso aluno?</label>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="jaAluno"
+                      id="alunoSim"
+                      value="sim"
+                      required
+                    />
+                    <label class="form-check-label" for="alunoSim">Sim</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="jaAluno"
+                      id="alunoNao"
+                      value="nao"
+                      required
+                    />
+                    <label class="form-check-label" for="alunoNao">Não</label>
+                  </div>
+                  <div class="invalid-feedback d-block">
+                    Selecione uma opção.
+                  </div>
+                </div>
+
+                <!-- Campo que aparece apenas se a opção "Sim" for marcada -->
+                <div class="mb-3 d-none" id="infoAlunoContainer">
+                  <label for="infoAluno" class="form-label"
+                    >Qual curso ou turma?</label
+                  >
+                  <input
+                    type="text"
+                    id="infoAluno"
+                    name="infoAluno"
+                    class="form-control"
+                    placeholder="Informe seu curso ou turma"
+                  />
+                </div>
+
                 <button type="submit" class="btn btn-light w-100">
                   Enviar
                 </button>
               </form>
 
-              <!-- Download PDF - inicialmente escondido -->
               <div id="download" class="text-center mt-4 d-none">
                 <p class="mb-2">Obrigado! Clique abaixo para baixar:</p>
                 <a id="download-btn" class="btn btn-success">Baixar PDF</a>
               </div>
 
-              <!-- Bootstrap JS Bundle -->
               <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-              <!-- Custom JS -->
-              <script src="js/script.js"></script>
+              <script>
+                // Mostra o campo adicional apenas se "Sim" for selecionado
+                const alunoSim = document.getElementById("alunoSim");
+                const alunoNao = document.getElementById("alunoNao");
+                const infoAlunoContainer = document.getElementById("infoAlunoContainer");
+                const infoAlunoInput = document.getElementById("infoAluno");
+
+                function toggleCampoAluno() {
+                  if (alunoSim.checked) {
+                    infoAlunoContainer.classList.remove("d-none");
+                    infoAlunoInput.setAttribute("required", "true");
+                  } else {
+                    infoAlunoContainer.classList.add("d-none");
+                    infoAlunoInput.removeAttribute("required");
+                  }
+                }
+
+                alunoSim.addEventListener("change", toggleCampoAluno);
+                alunoNao.addEventListener("change", toggleCampoAluno);
+              </script>
             </div>
           </div>
         </div>
